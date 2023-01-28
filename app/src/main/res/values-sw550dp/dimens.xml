@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="width_editor">535dp</dimen>
+    <dimen name="height_editor">535dp</dimen>
+
+</resources>

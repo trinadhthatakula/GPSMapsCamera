@@ -1,0 +1,140 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    namespace 'com.rms.gps.map.camera.my.gps.location.onphoto.gpscamera'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.rms.gps.map.camera.my.gps.location.onphoto.gpscamera"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        manifestPlaceholders = [MAPS_API_KEY: "${properties.getProperty('MAPS_API_KEY')}"]
+        buildConfigField "String", "MAPS_API_KEY", "\"${properties.getProperty('MAPS_API_KEY')}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+        dataBinding = true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.0"
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+
+    ///View
+    implementation 'androidx.core:core-ktx:1.10.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha01'
+    implementation "androidx.exifinterface:exifinterface:1.3.5"
+    implementation "androidx.activity:activity-ktx:1.7.0-alpha04"
+    implementation 'com.google.android.material:material:1.9.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha06'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    ///media3
+    implementation "androidx.media3:media3-exoplayer:1.0.0-beta03"
+    implementation "androidx.media3:media3-ui:1.0.0-beta03"
+
+    ///android cameraX
+    def camerax_version = "1.3.0-alpha03"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-video:${camerax_version}"
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
+
+    /// Kotlin Base, Coroutines & Koin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+
+    ///Compose
+    implementation 'androidx.activity:activity-compose:1.7.0-alpha04'
+    implementation "androidx.compose.ui:ui-graphics:1.4.0-alpha05"
+    implementation 'androidx.compose.foundation:foundation:1.4.0-alpha05'
+    implementation "androidx.compose.material:material-icons-extended:1.4.0-alpha05"
+    implementation "androidx.compose.ui:ui:1.4.0-alpha05"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.0-alpha05"
+    implementation 'androidx.compose.material3:material3:1.1.0-alpha05'
+    implementation "androidx.compose.material3:material3-window-size-class:1.1.0-alpha05"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha06"
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.3.3'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.4.0-alpha05"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.4.0-alpha05"
+
+    /// Lifecycle components
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha05'
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.0-alpha05"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha05"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha05"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0-alpha05'
+    implementation "androidx.lifecycle:lifecycle-process:2.6.0-alpha05"
+
+    ///COIL
+    implementation('io.coil-kt:coil-compose:2.2.2')
+    implementation('io.coil-kt:coil:2.2.2')
+    implementation('io.coil-kt:coil-svg:2.2.2')
+    implementation "com.airbnb.android:lottie-compose:5.2.0"
+
+    ///Google
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.maps.android:maps-ktx:3.4.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'
+    implementation 'com.google.maps.android:maps-compose:2.9.1'
+
+    ///camera view
+    api 'com.otaliastudios:cameraview:2.7.2'
+    ///PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    ///GPU Image
+    implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
+
+}

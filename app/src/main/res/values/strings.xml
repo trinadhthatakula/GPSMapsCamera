@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GPS Maps Camera</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
+</resources>

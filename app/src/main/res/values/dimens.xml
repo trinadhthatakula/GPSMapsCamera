@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="square_width">300dp</dimen>
+    <dimen name="bg_width">247.5dp</dimen>
+    <dimen name="bg_height">440dp</dimen>
+
+    <dimen name="width_editor">300dp</dimen>
+    <dimen name="height_editor">300dp</dimen>
+
+    <dimen name="width_header">280dp</dimen>
+    <dimen name="height_header">230dp</dimen>
+    <dimen name="loc_card_padding">15dp</dimen>
+
+</resources>

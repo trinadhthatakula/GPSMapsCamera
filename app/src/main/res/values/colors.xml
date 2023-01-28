@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="red">#CCF6594D</color>
+    <color name="red_light">#CCFA8B84</color>
+    <color name="pink">#CCED3E79</color>
+    <color name="pink_light">#CCED6C98</color>
+    <color name="violet">#CC9A3BAA</color>
+    <color name="violet_light">#CCB369BF</color>
+    <color name="indigo">#CC764EBD</color>
+    <color name="indigo_light">#CC8567B8</color>
+    <color name="blue">#CC4C5EBF</color>
+    <color name="blue_light">#CC7682C5</color>
+    <color name="sea_blue">#CC3EA6F8</color>
+    <color name="sea_blue_light">#CC7EC2F8</color>
+    <color name="sky_blue">#CC03A9F4</color>
+    <color name="sky_blue_light">#CC3ACEE1</color>
+    <color name="sea_green">#CC12A395</color>
+    <color name="sea_green_light">#CC44B3A9</color>
+    <color name="green">#CC36ca55</color>
+    <color name="green_light">#CC52CA6B</color>
+    <color name="yellowish_green">#CC8DBC58</color>
+    <color name="yellowish_green_light">#CCB6D395</color>
+    <color name="greenish_yellow">#CCCFDD45</color>
+    <color name="greenish_yellow_light">#CCE5EC9E</color>
+    <color name="yellow">#CCFBCA34</color>
+    <color name="yellow_light">#CCFAD053</color>
+    <color name="dark_yellow">#CCFAA323</color>
+    <color name="dark_yellow_light">#CCFAB652</color>
+    <color name="orange">#CCF87045</color>
+    <color name="orange_light">#CCF89070</color>
+
+    <color name="dot_inactive_white">#4DFFFFFF</color>
+    <color name="dot_active_white">#FFF</color>
+
+    <color name="dot_inactive_black">#4D000000</color>
+    <color name="dot_active_black">#000</color>
+
+    <color name="text_white">#FFFFFF</color>
+    <color name="floatColor">#FFF</color>
+    <color name="colorWhite">#fff</color>
+
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="drawable_padding">24dp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="normal_padding">16dp</dimen>
+    <dimen name="offset">15dp</dimen>
+    <dimen name="pageMarginAndOffset">25dp</dimen>
+    <dimen name="pageMargin">15dp</dimen>
+
+</resources>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:background="@tools:sample/backgrounds/scenic"
+    tools:context=".CamActivity">
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cameraAudio="off"
+        app:cameraAutoFocusMarker="@string/cameraview_default_autofocus_marker"
+        app:cameraEngine="camera2"
+        app:cameraExperimental="true"
+        app:cameraFacing="back"
+        app:cameraFlash="off"
+        app:cameraGesturePinch="zoom"
+        app:cameraGestureScrollHorizontal="exposureCorrection"
+        app:cameraGestureScrollVertical="filterControl2"
+        app:cameraGestureTap="autoFocus"
+        app:cameraGrid="off"
+        app:cameraHdr="on"
+        app:cameraMode="picture"
+        app:cameraPictureFormat="jpeg"
+        app:cameraPictureMetering="true"
+        app:cameraPictureSnapshotMetering="true"
+        app:cameraPlaySounds="true"
+        app:cameraPreview="glSurface"
+        app:cameraRequestPermissions="true"
+        app:cameraUseDeviceOrientation="true"
+        app:cameraVideoCodec="deviceDefault"
+        app:cameraWhiteBalance="auto"
+        app:layout_constraintBottom_toTopOf="@id/controller"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/watermark_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_grad_black_rev"
+            android:orientation="horizontal"
+            android:padding="@dimen/loc_card_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_drawOnPictureSnapshot="true"
+            app:layout_drawOnPreview="true"
+            app:layout_drawOnVideoSnapshot="true">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/map_holder"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="6dp">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/map_fragment"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+
+                <ImageView
+                    android:id="@+id/map_snap"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="gone" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@android:color/white"
+                    app:fontFamily="@font/nunito_sans"
+                    tools:text="You are at Hyderabad" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="@android:color/white"
+                    app:fontFamily="@font/nunito_sans"
+                    tools:text="33c cloudy" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.otaliastudios.cameraview.CameraView>
+
+    <LinearLayout
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="#000000"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/flipCamera"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:contentDescription="Flip camera"
+            android:padding="5dp"
+            android:src="@drawable/camera_flip0" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/capture_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/rounded_cam_snapper"
+                android:contentDescription="Capture Image"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_photo_camera" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_circular"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="visible"
+                app:indicatorColor="#FFF"
+                app:indicatorSize="55dp"
+                app:trackColor="#80FFFFFF"
+                app:trackCornerRadius="5dp"
+                app:trackThickness="10dp" />
+
+        </FrameLayout>
+
+
+        <ImageView
+            android:id="@+id/changeLocation"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:contentDescription="Change Location"
+            android:padding="5dp"
+            android:src="@drawable/change_loc_0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:background="@drawable/bg_grad_black"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/btn_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/flash"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="Flash"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:icon="@drawable/icon_flash_off"
+                app:iconGravity="textTop"
+                app:iconPadding="14dp"
+                app:iconSize="30dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/hdr"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="HDR"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:icon="@drawable/icon_hdr_off"
+                app:iconGravity="textTop"
+                app:iconPadding="14dp"
+                app:iconSize="30dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sounds"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="Sound"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:icon="@drawable/icon_audio_on"
+                app:iconGravity="textTop"
+                app:iconPadding="14dp"
+                app:iconSize="30dp"
+                app:iconTint="@color/white"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/white"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="auto"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:icon="@drawable/icon_incandesacent"
+                app:iconGravity="textTop"
+                app:iconPadding="14dp"
+                app:iconSize="30dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/timer"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="Duration"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:icon="@drawable/icon_duration_contol"
+                app:iconGravity="textTop"
+                app:iconPadding="14dp"
+                app:iconSize="30dp"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timer_layout"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:background="@drawable/semi_black_curved"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/no_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/semi_grey_curved"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_no_time"
+                app:tint="@android:color/white"
+                android:padding="12dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sec_10"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="10S"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sec_30"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="30S"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="@color/white" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sec_60"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="60S"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

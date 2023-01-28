@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="width_editor">580dp</dimen>
+    <dimen name="height_editor">580dp</dimen>
+
+    <dimen name="bg_width">517.5dp</dimen>
+    <dimen name="bg_height">920dp</dimen>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_filters"
+        android:icon="@drawable/icon_filters"
+        android:title="Filters" />
+
+    <item
+        android:id="@+id/action_stickers"
+        android:icon="@drawable/icon_stickers"
+        android:title="Stickers"/>
+
+    <item
+        android:id="@+id/action_bokeh"
+        android:icon="@drawable/icon_overlays"
+        android:title="Effects"/>
+
+</menu>
